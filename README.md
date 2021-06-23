@@ -1,6 +1,7 @@
 ## walkability-analysis
 
-Walkability measures how accessible an environment is by walking. 
+Walkability is a measure for describing how accessible an environment is by walking. What "walkable" means is a harder question to answer,  availability and the condition of footpaths and roads The term is broad, and 
+
 graphs are.....
 
 1. OSMnx graphs 
@@ -14,6 +15,8 @@ graphs are.....
 ### Intersection counts
 
 graph from place
+
+![Graph overview](docs/graph_overview.png)
 
 **2 simplifying graphs**
 
