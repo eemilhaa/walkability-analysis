@@ -1,6 +1,8 @@
-## walkability-analysis
+## Analysis of urban walkability
 
-Walkability sounds like a self-explanatory term: it measures how accessible an environment is by walking. However, the factors that walkability is composed of are hard to define. To say a place is walkable could for example mean that the network of streets is dense or that a wide selection of services can be accessed on foot. Other elements such as green space, air quality or the amount of traffic affect walkability too.
+Urban walkability sounds like a self-explanatory term: it measures how accessible an urban environment is by walking. However, the factors that make up walkability are hard to define and, consequently, walkability can be measured in many different ways. To say a place is walkable could for example mean that the network of streets is dense or that a wide selection of services can be accessed on foot. Other urban elements such as green space, air quality or the amount of traffic affect walkability too.
+
+In this post I will briefly analyze urban walkability with 2 approaches.
 
 graphs are.....
 
