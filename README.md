@@ -7,6 +7,7 @@ In this post I will analyze urban walkability with two different approaches. Fir
 All the analyses are done with OpenStreetMap (OSM) data, using the OSMnx, pandana and geopandas python packages. While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
 
 
+
 ### 1. OSMnx, graphs and intersection counts
 
 >*[OSMnx](https://osmnx.readthedocs.io/en/stable/) is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries.* 
@@ -15,16 +16,19 @@ In this analysis I used OSMnx to download the walkable street network of of the 
 
 
 ![Graph overview](docs/graph_overview.png)
-
-*Picture 1. The complete walkable network of Warsaw, Poland*
+*Picture 1. The walkable network of Warsaw, Poland*
 
 **Simplifying graphs**
 
 The resulting graph is very dense and has a ton of nodes. This can be problematic. For example, if two paths merge with a third path at even slightly different points, one real-life intersecion can turn into 2 nodes. In this analysis I tried to model actual intersections only, which is why I chose to simplify the graph a bit. I dissolved all nodes within five meters of eachother into single nodes and excluded all dead-ends. The result (picture 2) is not perfect, but I think it represents the "real life" intersections better than the original graph.
 
 ![Graph comparison](docs/graph_comparison.png)
-
 *Picture 2. The original (left) and simplified (right) graphs side by side*
+
+
+
+
+![Intersection grid](docs/intersection_grid.png)
 
 ### 2. Network analysis
 
