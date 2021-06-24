@@ -4,29 +4,35 @@ Urban walkability sounds like a self-explanatory term: it measures how accessibl
 
 In this post I will analyze urban walkability with two different approaches. First, I will focus on the structure of a street network by simply calculating intersection densities. Then, with a bit more complex approach, I will run a city-wide routing analysis to find out how different points of interest can be accessed on foot within an urban area.
 
-All the analyses are done with OpenStreetMap (OSM) data, using the OSMnx, pandana and geopandas python packages. While in this post I analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
+All the analyses are done with OpenStreetMap (OSM) data, using the OSMnx, pandana and geopandas python packages. While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
 
 
 ### 1. OSMnx, graphs and intersection counts
 
->[OSMnx](https://osmnx.readthedocs.io/en/stable/) is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries. 
+>*[OSMnx](https://osmnx.readthedocs.io/en/stable/) is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries.* 
 
-In this analysis I used OSMnx to download the walkable street network of of the analysis area, and to construct a graph from that network. A graph comprises of edges (walkable paths in this case) and nodes (points in which the edges intersect). The edges of the graph can be seen below.
+In this analysis I used OSMnx to download the walkable street network of of the analysis area, and to construct a graph from that network. A graph comprises of edges (walkable paths in this case) and nodes (points in which the edges intersect). The edges of the graph can be seen in picture 1.
 
-Also, when dealing with OSM data, one should keep in mind that some of the variance in data coverage and detail is just an inevitable by-product of the various mapping habits of OSM contributors.
 
 ![Graph overview](docs/graph_overview.png)
-*The complete walkable network of Warsaw, Poland*
+
+*Picture 1. The complete walkable network of Warsaw, Poland*
 
 **Simplifying graphs**
 
-The resulting graph is very dense and has a ton of nodes. This can be problematic. For example, if two paths merge with a third path at even slightly different points, one real-life intersecion can turn into 2 nodes. In this analysis I tried to model actual intersections only, which is why I chose to simplify the graph a bit. I dissolved all nodes within five meters of eachother into single nodes and excluded all dead-ends. The result (picture 1) is not perfect, but I think it represents the "real life" intersections better than the original graph.
+The resulting graph is very dense and has a ton of nodes. This can be problematic. For example, if two paths merge with a third path at even slightly different points, one real-life intersecion can turn into 2 nodes. In this analysis I tried to model actual intersections only, which is why I chose to simplify the graph a bit. I dissolved all nodes within five meters of eachother into single nodes and excluded all dead-ends. The result (picture 2) is not perfect, but I think it represents the "real life" intersections better than the original graph.
 
 ![Graph comparison](docs/graph_comparison.png)
+
+*Picture 2. The original (left) and simplified (right) graphs side by side*
 
 ### 2. Network analysis
 
 For the network analysis I used the complete walkable network without any simplification. Instead of just nodes, the routing analysis uses the whole graph, and keeping the precise geometry leads to more accurate walk times.
+
+
+Also, when dealing with OSM data, one should keep in mind that some of the variance in data coverage and detail is just an inevitable by-product of the various mapping habits of OSM contributors.
+
 
 ### 3. References
 
