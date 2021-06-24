@@ -1,4 +1,4 @@
-## Analysing of urban walkability
+## Analysing urban walkability
 
 Urban walkability sounds like a self-explanatory term: it measures how accessible an urban environment is by walking. However, the factors that make up walkability are hard to define, and, consequently, walkability can be understood and measured in many different ways. To say a place is walkable could, for example, mean that the network of streets is dense or that a wide selection of services can be accessed on foot. Other urban elements such as green space, air quality or the amount of traffic affect walkability too.
 
@@ -11,11 +11,12 @@ All the analyses are done with OpenStreetMap (OSM) data, using the OSMnx, pandan
 
 >[OSMnx](https://osmnx.readthedocs.io/en/stable/) is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries. 
 
-road  
+In this analysis I used OSMnx to download the walkable street network of of the analysis area, and to construct a graph from that network. A graph comprises of edges (walkable paths in this case) and nodes (points in which the edges intersect). The edges of the graph can be seen below.
 
 Also, when dealing with OSM data, one should keep in mind that some of the variance in data coverage and detail is just an inevitable by-product of the various mapping habits of OSM contributors.
 
 ![Graph overview](docs/graph_overview.png)
+*The complete walkable network of Warsaw, Poland*
 
 **Simplifying graphs**
 
