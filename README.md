@@ -9,7 +9,7 @@ All the analyses are done with OpenStreetMap (OSM) data, using the OSMnx, pandan
 
 ### 1. OSMnx, graphs and intersection counts
 
->OSMnx is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries. 
+>[OSMnx](https://osmnx.readthedocs.io/en/stable/) is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries. 
 
 road  
 
