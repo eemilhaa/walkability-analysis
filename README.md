@@ -25,10 +25,8 @@ The resulting graph is very dense and has a ton of nodes. This can be problemati
 ![Graph comparison](docs/graph_comparison.png)
 *Picture 2. The original (left) and simplified (right) graphs side by side*
 
+The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a bunch of nodes isn't really informative, so  
 
-
-
-![Intersection grid](docs/intersection_grid.png)
 ![Intersection grid](docs/intersection_hexbin.png)
 
 ### 2. Network analysis
