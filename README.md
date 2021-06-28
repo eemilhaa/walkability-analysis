@@ -22,8 +22,6 @@ In this analysis I used OSMnx to download the walkable street network of the ana
 ![Graph overview](docs/graph_overview.png)
 *The egdes of Warsaw's walkable street network*
 
-<br/>
-
 The resulting graph is very dense and has a ton of nodes. This can be problematic. For example, if two paths merge with a third path at even slightly different points, one real-life intersecion can turn into 2 nodes. In this analysis I tried to model actual intersections only, which is why I chose to simplify the graph a bit. I dissolved all nodes within five meters of eachother into single nodes and excluded all dead-ends. The result is not perfect, but I think it represents the "real life" intersections better than the original graph.
 
 ![Graph comparison](docs/graph_comparison.png)
