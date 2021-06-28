@@ -2,9 +2,9 @@
 
 Urban walkability sounds like a self-explanatory term: it measures how accessible an urban environment is by walking. However, the factors that make up walkability are hard to define, and, consequently, walkability can be understood and measured in many different ways. To say a place is walkable could, for example, mean that the network of streets is dense or that a wide selection of services can be accessed on foot. Other urban elements such as green space, air quality or the amount of traffic affect walkability too.
 
-In this post I will analyze urban walkability with two different approaches. First, I will focus on the structure of a street network by simply calculating intersection densities. Then, with a bit more complex approach, I will run a city-wide routing analysis to find out how different points of interest can be accessed on foot within an urban area.
+In this post I will analyze urban walkability with two network-based approaches. First, I will focus on the structure of a street network by simply calculating intersection densities. Then, with a bit more complex approach, I will run a city-wide routing analysis to find out how different points of interest can be accessed on foot within an urban area.
 
-All the analyses are done with OpenStreetMap (OSM) data, using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [pandana](https://udst.github.io/pandana/) and [geopandas](https://geopandas.org/) python packages. Visualizations are a mix of QGIS and python's matplotlib. While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
+All the analyses are done with OpenStreetMap (OSM) data, using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [pandana](https://udst.github.io/pandana/) and [geopandas](https://geopandas.org/) python packages. Visualizations are a mix of QGIS and matplotlib. While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
 
 <br/>
 
@@ -13,6 +13,7 @@ All the analyses are done with OpenStreetMap (OSM) data, using the [OSMnx](https
 **1.1 OSMnx and graphs**
 
 From OSMnx's documentation:
+
 >*OSMnx is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries.* 
 
 In this analysis I used OSMnx to download the walkable street network of of the analysis area, and to construct a graph from that network. A graph comprises of edges (walkable paths in this case) and nodes (points in which the edges intersect). The edges of the graph can be seen in picture 1.
@@ -34,7 +35,7 @@ The resulting graph is very dense and has a ton of nodes. This can be problemati
 
 **1.2 Visualizing intersection density**
 
-The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a bunch of nodes isn't really an informative display of the data. To better visualize the intersection density I used matplotlib's hexbin functionality. Below are Warsaw's intersections aggregated to a 75x75 grid of hexagons (picture 3).   
+The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a bunch of nodes isn't really an informative display of the data. To better visualize the intersection density I used matplotlib's hexbin functionality. Below are Warsaw's intersections aggregated to a grid of hexagons (picture 3).   
 
 ![Intersection grid](docs/intersection_hexbin.png)
 *Picture 3. Intersection density visualized*
@@ -45,9 +46,11 @@ The simplification nearly halved the intersection count: from 177 207 to 96 414.
 
 For the network analysis I used the complete walkable network without any simplification. Instead of just nodes, the routing analysis uses the whole graph, and keeping the precise geometry leads to more accurate walk times.
 
+![Walk_access](docs/walk_access.png)
 
 Also, when dealing with OSM data, one should keep in mind that some of the variance in data coverage and detail is just an inevitable by-product of the various mapping habits of OSM contributors.
 
+<br/>
 
 ### 3. References
 
