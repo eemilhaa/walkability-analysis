@@ -10,39 +10,38 @@ All the analyses are done with OpenStreetMap (OSM) data, using the [OSMnx](https
 
 ### 1. Intersection counts
 
-**1.1 OSMnx and graphs**
+**OSMnx and graphs**
 
 From OSMnx's documentation:
 
 >*OSMnx is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries.* 
 
-In this analysis I used OSMnx to download the walkable street network of of the analysis area, and to construct a graph from that network. A graph comprises of edges (walkable paths in this case) and nodes (points in which the edges intersect). The edges of the graph can be seen in picture 1.
+In this analysis I used OSMnx to download the walkable street network of the analysis area, and to construct a graph from that network. A graph comprises of edges (walkable paths in this case) and nodes (points in which the edges intersect).
 
 
 ![Graph overview](docs/graph_overview.png)
-*Picture 1. The walkable network of Warsaw, Poland*
+*Egdes of Warsaw's walkable street network*
 
 <br/>
 
-**1.1 Simplifying graphs**
-
-The resulting graph is very dense and has a ton of nodes. This can be problematic. For example, if two paths merge with a third path at even slightly different points, one real-life intersecion can turn into 2 nodes. In this analysis I tried to model actual intersections only, which is why I chose to simplify the graph a bit. I dissolved all nodes within five meters of eachother into single nodes and excluded all dead-ends. The result (picture 2) is not perfect, but I think it represents the "real life" intersections better than the original graph.
+The resulting graph is very dense and has a ton of nodes. This can be problematic. For example, if two paths merge with a third path at even slightly different points, one real-life intersecion can turn into 2 nodes. In this analysis I tried to model actual intersections only, which is why I chose to simplify the graph a bit. I dissolved all nodes within five meters of eachother into single nodes and excluded all dead-ends. The result is not perfect, but I think it represents the "real life" intersections better than the original graph.
 
 ![Graph comparison](docs/graph_comparison.png)
-*Picture 2. The original (left) and simplified (right) graphs side by side*
+*The original (left) and simplified (right) graphs side by side*
 
 <br/>
 
-**1.2 Visualizing intersection density**
+**Visualizing intersection density**
 
-The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a bunch of nodes isn't really an informative display of the data. To better visualize the intersection density I used matplotlib's hexbin functionality. Below are Warsaw's intersections aggregated to a grid of hexagons (picture 3).   
+The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a heap of nodes isn't really an informative display of the data. To better visualize the intersection density I first used matplotlib's hexbin functionality and then experimented a bit with seaborn's kernel density plotting (kde).
 
 ![Intersection grid](docs/intersection_hexbin.png)
-*Picture 3. Intersection density visualized*
+*Intersection density visualized with hexbins*
 
 <br/>
 
 ![Intersection kde](docs/intersection_kde.png)
+*Seaborn's kde plotting is another cool way to visualize intersections*
 
 ### 2. Network analysis
 
