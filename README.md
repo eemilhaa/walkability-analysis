@@ -20,7 +20,7 @@ In this analysis I used OSMnx to download the walkable street network of the ana
 
 
 ![Graph overview](docs/graph_overview.png)
-*Egdes of Warsaw's walkable street network*
+*The egdes of Warsaw's walkable street network*
 
 <br/>
 
