@@ -4,13 +4,17 @@ Urban walkability sounds like a self-explanatory term: it measures how accessibl
 
 In this post I will analyze urban walkability with two different approaches. First, I will focus on the structure of a street network by simply calculating intersection densities. Then, with a bit more complex approach, I will run a city-wide routing analysis to find out how different points of interest can be accessed on foot within an urban area.
 
-All the analyses are done with OpenStreetMap (OSM) data, using the OSMnx, pandana and geopandas python packages. Visualizations are a mix of QGIS and python's matplotlib. While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
+All the analyses are done with OpenStreetMap (OSM) data, using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [pandana](https://udst.github.io/pandana/) and [geopandas](https://geopandas.org/) python packages. Visualizations are a mix of QGIS and python's matplotlib. While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
 
 <br/>
 
-### 1. OSMnx, graphs and intersection counts
+### 1. Intersection counts
 
->*[OSMnx](https://osmnx.readthedocs.io/en/stable/) is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries.* 
+**1.1 OSMnx and graphs**
+
+From OSMnx's documentation:
+
+>*OSMnx is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries.* 
 
 In this analysis I used OSMnx to download the walkable street network of of the analysis area, and to construct a graph from that network. A graph comprises of edges (walkable paths in this case) and nodes (points in which the edges intersect). The edges of the graph can be seen in picture 1.
 
@@ -18,7 +22,7 @@ In this analysis I used OSMnx to download the walkable street network of of the 
 ![Graph overview](docs/graph_overview.png)
 *Picture 1. The walkable network of Warsaw, Poland*
 
-<br>
+<br/>
 
 **1.1 Simplifying graphs**
 
