@@ -42,6 +42,8 @@ The simplification nearly halved the intersection count: from 177 207 to 96 414.
 
 <br/>
 
+![Intersection kde](docs/intersection_kde.png)
+
 ### 2. Network analysis
 
 For the network analysis I used the complete walkable network without any simplification. Instead of just nodes, the routing analysis uses the whole graph, and keeping the precise geometry leads to more accurate walk times.
