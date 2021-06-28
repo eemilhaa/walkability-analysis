@@ -18,7 +18,7 @@ In this analysis I used OSMnx to download the walkable street network of of the 
 ![Graph overview](docs/graph_overview.png)
 *Picture 1. The walkable network of Warsaw, Poland*
 
-<br/>
+<br/> 
 **1.1 Simplifying graphs**
 
 The resulting graph is very dense and has a ton of nodes. This can be problematic. For example, if two paths merge with a third path at even slightly different points, one real-life intersecion can turn into 2 nodes. In this analysis I tried to model actual intersections only, which is why I chose to simplify the graph a bit. I dissolved all nodes within five meters of eachother into single nodes and excluded all dead-ends. The result (picture 2) is not perfect, but I think it represents the "real life" intersections better than the original graph.
@@ -26,7 +26,7 @@ The resulting graph is very dense and has a ton of nodes. This can be problemati
 ![Graph comparison](docs/graph_comparison.png)
 *Picture 2. The original (left) and simplified (right) graphs side by side*
 
-<br/>
+<br/> 
 **1.2 Visualizing intersection density**
 
 The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a bunch of nodes isn't really an informative display of the data. To better visualize the intersection density I used matplotlib's hexbin functionality. Below are Warsaw's intersections aggregated to a 75x75 grid of hexagons (picture 3).   
