@@ -6,7 +6,7 @@ In this post I will analyze urban walkability with two different approaches. Fir
 
 All the analyses are done with OpenStreetMap (OSM) data, using the OSMnx, pandana and geopandas python packages. Visualizations are a mix of QGIS and python's matplotlib. While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
 
-<br/><br/>
+<br/>
 
 ### 1. OSMnx, graphs and intersection counts
 
