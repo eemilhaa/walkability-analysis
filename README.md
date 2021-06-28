@@ -29,6 +29,7 @@ The resulting graph is very dense and has a ton of nodes. This can be problemati
 
 
 ![Intersection grid](docs/intersection_grid.png)
+![Intersection grid](docs/intersection_hexbin.png)
 
 ### 2. Network analysis
 
