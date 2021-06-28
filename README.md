@@ -4,9 +4,9 @@ Urban walkability sounds like a self-explanatory term: it measures how accessibl
 
 In this post I will analyze urban walkability with two different approaches. First, I will focus on the structure of a street network by simply calculating intersection densities. Then, with a bit more complex approach, I will run a city-wide routing analysis to find out how different points of interest can be accessed on foot within an urban area.
 
-All the analyses are done with OpenStreetMap (OSM) data, using the OSMnx, pandana and geopandas python packages. While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
+All the analyses are done with OpenStreetMap (OSM) data, using the OSMnx, pandana and geopandas python packages. Visualizations are a mix of QGIS and python's matplotlib. While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
 
-
+<br/><br/>
 
 ### 1. OSMnx, graphs and intersection counts
 
@@ -25,9 +25,11 @@ The resulting graph is very dense and has a ton of nodes. This can be problemati
 ![Graph comparison](docs/graph_comparison.png)
 *Picture 2. The original (left) and simplified (right) graphs side by side*
 
-The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a bunch of nodes isn't really informative, so  
+The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a bunch of nodes isn't really an informative display of the data. To better visualize the network density I used matplotlib's hexbin functionality. Below are Warsaw's intersections aggregated to a 75x75 grid of hexagons (picture 2). 
 
 ![Intersection grid](docs/intersection_hexbin.png)
+
+
 
 ### 2. Network analysis
 
