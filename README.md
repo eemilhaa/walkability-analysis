@@ -39,7 +39,7 @@ The simplification nearly halved the intersection count: from 177 207 to 96 414.
 <br/>
 
 ![Intersection kde](docs/intersection_kde.png)
-*Seaborn's kde plotting is another cool way to visualize intersections*
+*Seaborn's kde plotting is another cool way to visualize densities*
 
 ### 2. Network analysis
 
