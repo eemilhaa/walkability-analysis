@@ -13,7 +13,6 @@ All the analyses are done with OpenStreetMap (OSM) data, using the [OSMnx](https
 **1.1 OSMnx and graphs**
 
 From OSMnx's documentation:
-
 >*OSMnx is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries.* 
 
 In this analysis I used OSMnx to download the walkable street network of of the analysis area, and to construct a graph from that network. A graph comprises of edges (walkable paths in this case) and nodes (points in which the edges intersect). The edges of the graph can be seen in picture 1.
