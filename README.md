@@ -43,11 +43,13 @@ The simplification nearly halved the intersection count: from 177 207 to 96 414.
 
 <br/>
 
-### 2. Network analysis
+### 2. Routing analysis
+
+**Alternative indicators for walkable urban space**
 
 The first part of the analysis relied on the assumption that a dense network automatically indicates a walkable place. While this is sometimes the case, there's much more to urban space than intersection counts. So, to get a different insight into urban walkability, I took a slighlty more qualitative approach.
 
-Novack et al. (2018) discuss in their [article](https://www.mdpi.com/1424-8220/18/11/3794/htm) how different urban features affect the pleasantness of urban space. This article was helpful as the study was done using OSM data, and the authors even provide lists of different urban features that make urban space pleasant. For my analysis I used their list of OSM features that indicate sociable places, or so called ["third places"](https://en.wikipedia.org/wiki/Third_place).
+Novack et al. (2018) discuss in their [article](https://www.mdpi.com/1424-8220/18/11/3794/htm) how different urban features affect the pleasantness of urban space. This article was helpful as the study was done using OSM data, and the authors even provide lists of different features that make urban space pleasant. For my analysis I used their list of OSM features that indicate sociable places, or so called ["third places"](https://en.wikipedia.org/wiki/Third_place):
 
 ```python
 tags = {
@@ -73,14 +75,16 @@ tags = {
 }
 ```
 
-I first selected urban features that could indicate
+**Accessibility analysis**
 
-analyzed how accessible different urban features are by walking. Novack et al. I based my selection of feataures 
+With this list of OSM tags, I downloaded the corrseponding points of interest (POIs) from OSM using OSMnx. Then, with a combination of OSMnx and pandana, I created a routable network to which I set the locations of the POIs.
 
-
-For the network analysis I used the same walkable network, but this time without any simplifications. Instead of just nodes, the routing analysis uses the whole graph, and keeping the precise geometry leads to more accurate walk times.
+After the network was constructed, I ran the routing analysis with pandana. The analysis calculates the travel time from every network node to a specified number of nearest POIs. I specified that 10 nearest POIS should be routed to which means that in the result every network node has a maximum of 10 different travel times: time to to 1st, 2nd, 3rd ... 10th nearest POI. The travel times are based on the assumption that average walking speed is 4.5 km/h, and I limited the analysis to only calculate travel times to POIs that are within a 15-minute walk.
 
 ![Walk_access](docs/walk_access.png)
+*Every node of the network visualized with a color corresponding to the travel time from said note to the nearest POI.
+
+The resulting visualization is a bit cluttered. To get a bit more clear view of the accessibility, I used once again matplotlib's hexbins. Instead of amounts of points, I calculated the average travel times for every haxagon in the grid.
 
 ![Walk_access](docs/walk_access_comparison.png)
 
