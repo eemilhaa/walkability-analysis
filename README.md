@@ -45,7 +45,9 @@ The simplification nearly halved the intersection count: from 177 207 to 96 414.
 
 ### 2. Network analysis
 
-For the network analysis I used the complete walkable network without any simplification. Instead of just nodes, the routing analysis uses the whole graph, and keeping the precise geometry leads to more accurate walk times.
+The first part of the analysis relied on the assumption that a dense network automatically indicates a walkable place. While this is often the case, there's much more to urban space than intersection counts. To get a different insight into urban walkability, 
+
+For the network analysis I used the same walkable network, but this time without any simplifications. Instead of just nodes, the routing analysis uses the whole graph, and keeping the precise geometry leads to more accurate walk times.
 
 ![Walk_access](docs/walk_access.png)
 
