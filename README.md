@@ -49,6 +49,8 @@ For the network analysis I used the complete walkable network without any simpli
 
 ![Walk_access](docs/walk_access.png)
 
+![Walk_access](docs/walk_access_comparison.png)
+
 Also, when dealing with OSM data, one should keep in mind that some of the variance in data coverage and detail is just an inevitable by-product of the various mapping habits of OSM contributors.
 
 <br/>
