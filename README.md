@@ -31,7 +31,7 @@ The resulting graph is very dense and has a ton of nodes. This can be problemati
 
 **Visualizing intersection density**
 
-The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a heap of nodes isn't really an informative display of the data. To better visualize the intersection density I first used matplotlib's hexbin functionality and then experimented a bit with seaborn's kernel density estimate (KDE) plotting.
+The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, just a heap of nodes isn't really an informative display of the data. To better visualize the intersection density I first used matplotlib's hexbin functionality and then experimented a bit with seaborn's kernel density estimate (KDE) plotting.
 
 ![Intersection grid](docs/intersection_hexbin.png)
 *Intersections aggregated to a hexagonal grid*
@@ -39,15 +39,44 @@ The simplification nearly halved the intersection count: from 177 207 to 96 414.
 <br/>
 
 ![Intersection kde](docs/intersection_kde.png)
-*Seaborn's KDE plotting is another cool way to visualize densities*
+*Seaborn's KDE plotting is another cool way to visualize point densities*
 
 <br/>
 
 ### 2. Network analysis
 
-The first part of the analysis relied on the assumption that a dense network automatically indicates a walkable place. While this is sometimes the case, there's much more to urban space than intersection counts.
+The first part of the analysis relied on the assumption that a dense network automatically indicates a walkable place. While this is sometimes the case, there's much more to urban space than intersection counts. So, to get a different insight into urban walkability, I took a slighlty more qualitative approach.
 
-To get a different insight into urban walkability, I analyzed how accessible different urban features are by walking.
+Novack et al. (2018) discuss in their [article](https://www.mdpi.com/1424-8220/18/11/3794/htm) how different urban features affect the pleasantness of urban space. This article was helpful as the study was done using OSM data, and the authors even provide lists of different urban features that make urban space pleasant. For my analysis I used their list of OSM features that indicate sociable places, or so called ["third places"](https://en.wikipedia.org/wiki/Third_place).
+
+```python
+tags = {
+    'amenity':[
+        'cafe',
+        'bar',
+        'pub',
+        'restaurant'
+    ],
+    'shop':[
+        'bakery',
+        'convenience',
+        'supermarket',
+        'mall',
+        'department_store',
+        'clothes',
+        'fashion',
+        'shoes'
+    ],
+    'leisure':[
+        'fitness_centre'
+    ]
+}
+```
+
+I first selected urban features that could indicate
+
+analyzed how accessible different urban features are by walking. Novack et al. I based my selection of feataures 
+
 
 For the network analysis I used the same walkable network, but this time without any simplifications. Instead of just nodes, the routing analysis uses the whole graph, and keeping the precise geometry leads to more accurate walk times.
 
