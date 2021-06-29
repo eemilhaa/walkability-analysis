@@ -16,7 +16,7 @@ From OSMnx's documentation:
 
 >*OSMnx is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries.* 
 
-In this analysis I used OSMnx to download the walkable street network of the analysis area, and to construct a graph from that network. A graph comprises of edges (walkable paths in this case) and nodes (points in which the edges intersect).
+In the first half of the analysis I used OSMnx to download the walkable street network of the analysis area, and to construct a graph from that network. A graph comprises of edges (walkable paths in this case) and nodes (points in which the edges intersect).
 
 
 ![Graph overview](docs/graph_overview.png)
@@ -31,7 +31,7 @@ The resulting graph is very dense and has a ton of nodes. This can be problemati
 
 **Visualizing intersection density**
 
-The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a heap of nodes isn't really an informative display of the data. To better visualize the intersection density I first used matplotlib's hexbin functionality and then experimented a bit with seaborn's kernel density plotting (kde).
+The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a heap of nodes isn't really an informative display of the data. To better visualize the intersection density I first used matplotlib's hexbin functionality and then experimented a bit with seaborn's kernel density estimate (KDE) plotting.
 
 ![Intersection grid](docs/intersection_hexbin.png)
 *Intersections aggregated to a hexagonal grid*
@@ -39,13 +39,15 @@ The simplification nearly halved the intersection count: from 177 207 to 96 414.
 <br/>
 
 ![Intersection kde](docs/intersection_kde.png)
-*Seaborn's kde plotting is another cool way to visualize densities*
+*Seaborn's KDE plotting is another cool way to visualize densities*
 
 <br/>
 
 ### 2. Network analysis
 
-The first part of the analysis relied on the assumption that a dense network automatically indicates a walkable place. While this is often the case, there's much more to urban space than intersection counts. To get a different insight into urban walkability, 
+The first part of the analysis relied on the assumption that a dense network automatically indicates a walkable place. While this is sometimes the case, there's much more to urban space than intersection counts.
+
+To get a different insight into urban walkability, I analyzed how accessible different urban features are by walking.
 
 For the network analysis I used the same walkable network, but this time without any simplifications. Instead of just nodes, the routing analysis uses the whole graph, and keeping the precise geometry leads to more accurate walk times.
 
