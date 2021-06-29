@@ -4,7 +4,7 @@ Urban walkability sounds like a self-explanatory term: it measures how accessibl
 
 In this post I will analyze urban walkability with two network-based approaches. First, I will focus on the structure of a street network by simply calculating intersection densities. Then, with a bit more complex approach, I will run a city-wide routing analysis to find out how different points of interest can be accessed on foot within an urban area.
 
-All the analyses are done with OpenStreetMap (OSM) data, using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [pandana](https://udst.github.io/pandana/) and [geopandas](https://geopandas.org/) python packages. Visualizations are a mix of QGIS and matplotlib. While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
+All the analyses are done with OpenStreetMap (OSM) data, using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [pandana](https://udst.github.io/pandana/) and [geopandas](https://geopandas.org/) python packages. Visualizations are a mix of matplotlib and seaborn. While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
 
 <br/>
 
@@ -22,7 +22,7 @@ In this analysis I used OSMnx to download the walkable street network of the ana
 ![Graph overview](docs/graph_overview.png)
 *The egdes of Warsaw's walkable street network*
 
-The resulting graph is very dense and has a ton of nodes. This can be problematic. For example, if two paths merge with a third path at even slightly different points, one real-life intersecion can turn into 2 nodes. In this analysis I tried to model actual intersections only, which is why I chose to simplify the graph a bit. I dissolved all nodes within five meters of eachother into single nodes and excluded all dead-ends. The result is not perfect, but I think it represents the "real life" intersections better than the original graph.
+The resulting graph is very dense and has a ton of nodes. This can be problematic. For example, if two paths merge with a third path at even slightly different points, one real-life intersecion can turn into 2 nodes. In this analysis I tried to model actual intersections only, which is why I chose to simplify the graph a bit. I dissolved all nodes within five meters of eachother into single nodes and excluded all dead-ends. The result is not perfect, but I think it represents the "real-life" intersections better than the original graph.
 
 ![Graph comparison](docs/graph_comparison.png)
 *The original (left) and simplified (right) graphs side by side*
@@ -31,15 +31,17 @@ The resulting graph is very dense and has a ton of nodes. This can be problemati
 
 **Visualizing intersection density**
 
-The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, just a heap of nodes isn't really an informative display of the data. To better visualize the intersection density I first used matplotlib's hexbin functionality and then experimented a bit with seaborn's kernel density plotting (kde).
+The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a heap of nodes isn't really an informative display of the data. To better visualize the intersection density I first used matplotlib's hexbin functionality and then experimented a bit with seaborn's kernel density plotting (kde).
 
 ![Intersection grid](docs/intersection_hexbin.png)
-*Intersection density visualized with hexbins*
+*Intersections aggregated to a hexagonal grid*
 
 <br/>
 
 ![Intersection kde](docs/intersection_kde.png)
 *Seaborn's kde plotting is another cool way to visualize densities*
+
+<br/>
 
 ### 2. Network analysis
 
