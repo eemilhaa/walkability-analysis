@@ -86,12 +86,16 @@ After the network was constructed, I ran the routing analysis with pandana. The 
 ![Walk_access](docs/walk_access.png)
 *Every node of the network visualized with a color corresponding to the travel time from said note to the nearest POI.*
 
+<br/>
+
 The resulting visualization is a bit cluttered. To get a bit more clear view to the data, I used once again matplotlib's hexbins. Instead of amounts of points, I calculated the average travel times for every haxagon in the grid this time.
 
 Also, visualizing the travel times to only the nearest POIs probably isn't the ideal approach. For example, if place x had one cafe and place y had a cluster of multiple restaurants and shops, both places would look nearly identical on the map. Plotting the travel times to for example the 5th nearest POI would fix this, as singular fetures wouldn't affect the map as much. Below is a comparison of how the visualization changes when the ruoting target is changed between nearest, 5th nearest and 10th nearest POI.
 
 ![Walk_access_comparison](docs/walk_access_comparison.png)
 *Comparing different routing analyses*
+
+<br/>
 
 This visualization is much better, and it shows some distinct areas where sociable urban place can and cannot be found. Especially the 5th and 10th nearest visualizations detect also urban subcenters pretty nicely. When comparing these maps to just the intersection density some correltaion can be found, but some areas are noticeably more or less prominent depending on the method.
 
