@@ -4,11 +4,11 @@ Urban walkability sounds like a self-explanatory term: it measures how accessibl
 
 In this post I will analyze urban walkability with two network-based approaches. First, I will focus on the structure of a street network by simply calculating intersection densities. Then, with a bit more complex approach, I will run a city-wide routing analysis to find out how different points of interest can be accessed on foot within an urban area.
 
-All the analyses are done with OpenStreetMap (OSM) data, using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [pandana](https://udst.github.io/pandana/) and [geopandas](https://geopandas.org/) python packages. Visualizations are a mix of matplotlib and seaborn. While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
+The data and tools used in the analysis are all open. The street network and urban features are from OpenStreetMap (OSM), and the different analyses are done using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [pandana](https://udst.github.io/pandana/) and [geopandas](https://geopandas.org/) python packages. Visualizations are a mix of matplotlib and seaborn. While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
 
 <br/>
 
-### 1. Intersection counts
+### 1. Intersection density as an indicator of walkability
 
 **OSMnx and graphs**
 
@@ -30,25 +30,23 @@ The resulting graph is very dense and has a ton of nodes. This can be problemati
 
 **Visualizing intersection density**
 
-The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, just a heap of nodes isn't really an informative display of the data. To better visualize the intersection density I first used matplotlib's hexbin functionality and then experimented a bit with seaborn's kernel density estimate (KDE) plotting.
+The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, just a heap of nodes isn't really an informative display of the data. To better visualize the intersection density I first used matplotlib's hexbin functionality and then experimented a bit with seaborn's kernel density estimate (KDE) plots.
 
 ![Intersection grid](docs/intersection_hexbin.png)
 *Intersections aggregated to a hexagonal grid*
-
-<br/>
 
 ![Intersection kde](docs/intersection_kde.png)
 *Seaborn's KDE plotting is another cool way to visualize point densities*
 
 <br/>
 
-### 2. Routing analysis
+### 2. Walkability measured with access to sociable places
 
 **Alternative indicators for walkable urban space**
 
-The first part of the analysis relied on the assumption that a dense city indicates a walkable place. While the pshysical structure of the street network definitely plays a part, there's much more to urban space than intersection counts. So, to get a different insight into urban walkability, I took a slighlty more qualitative approach.
+The first part of the analysis relied on the assumption that a dense urban fabric indicates a walkable place. While the pshysical structure of the street network definitely plays a part, there's much more to urban space than intersection counts. So, to get a different insight into urban walkability, I took a slighlty more qualitative approach.
 
-Novack et al. (2018) discuss in their [article](https://www.mdpi.com/1424-8220/18/11/3794/htm) how different urban features affect the pleasantness of urban space. This article was helpful as the study was done using OSM data, and the authors even provide lists of different features that make urban space pleasant. For my analysis I used their list of OSM features that indicate sociable places, or so called ["third places"](https://en.wikipedia.org/wiki/Third_place):
+Novack et al. (2018) discuss in their [article](https://doi.org/10.3390/s18113794) how different urban features affect the pleasantness of urban space. This article was helpful as the study was done using OSM data, and the authors even provide lists of different features that make urban space pleasant. For my analysis I used their list of OSM features that indicate sociable places, or so called ["third places"](https://en.wikipedia.org/wiki/Third_place):
 
 ```python
 tags = {
@@ -73,37 +71,30 @@ tags = {
     ]
 }
 ```
-*The OSM tags use in the analysis*
+*The OSM tags used in the analysis*
 
 <br/>
 
-**Accessibility analysis**
+**Routing analysis**
 
-With this list of OSM tags, I downloaded the corrseponding points of interest (POIs) from OSM using OSMnx. Then, with a combination of OSMnx and pandana, I created a routable network to which I set the locations of the POIs.
+With this list of OSM tags I downloaded the corrseponding points of interest (POIs) from OSM using OSMnx. Then, with a combination of OSMnx and pandana, I created a routable network to which I set the locations of the POIs. For this part of the analysis I used the complete, unsimplified graph. Instead of just nodes the routing analysis uses the whole network, so keeping the precise geometry leads to more accurate travel time calculations. 
 
-After the network was constructed, I ran the routing analysis with pandana. The analysis calculates the travel time from every network node to a specified number of nearest POIs. I specified that 10 nearest POIS should be routed to which means that in the result every network node has a maximum of 10 different travel times: time to to 1st, 2nd, 3rd ... 10th nearest POI. The travel times are based on the assumption that average walking speed is 4.5 km/h. Additionally I limited the analysis to only calculate travel times to POIs that are within a 15-minute walk.
+After the network was constructed, I ran the routing analysis with pandana. The analysis calculates the travel time from every network node to a specified number of nearest POIs. I specified that 10 nearest POIS should be routed to which means that in the result every network node has a maximum of 10 different travel times: time to to 1st, 2nd, 3rd, ... 10th nearest POI. The travel times are based on the assumption that average walking speed is 4.5 km/h. Additionally I limited the analysis to only calculate travel times to POIs that are within a 15-minute walk.
 
 ![Walk_access](docs/walk_access.png)
-*Every node of the network visualized with a color corresponding to the travel time from said note to the nearest POI.*
-
-<br/>
+*Walking time from every node to the nearest POI.*
 
 The resulting visualization is a bit cluttered. To get a clearer view to the data, I once again used matplotlib's hexbins. Instead of amounts of points, I calculated the average travel times for every haxagon this time.
 
-Also, visualizing the travel times to only the nearest POIs probably isn't the ideal approach. For example, if place x had one cafe and place y had a cluster of multiple restaurants and shops, both places would look nearly identical on the map. Plotting the travel times to for example the 5th nearest POI would fix this, as singular fetures wouldn't affect the map as much. Below is a comparison of how the visualization changes when the ruoting target is changed between nearest, 5th nearest and 10th nearest POI.
+Another thing to note is that only visualizing the travel times to the nearest POIs probably isn't the ideal approach. For example, if one place had one cafe and another place had a cluster of multiple restaurants and shops, both places would look nearly identical on the map. Plotting the travel times to, for example, the 5th nearest POI would fix this, as singular fetures wouldn't affect the map as much. Below is a comparison of how the visualization changes when the selection of walking time is changed between nearest, 5th nearest and 10th nearest POI.
 
 ![Walk_access_comparison](docs/walk_access_comparison.png)
 *Comparing different routing analyses*
 
-<br/>
-
-This visualization is much better, and it shows some distinct areas where sociable urban places can and cannot be found. Especially the 5th and 10th nearest visualizations detect also urban subcenters pretty nicely. When comparing these maps to just the intersection density some correltaion can be found, but some areas are noticeably more or less prominent depending on the method.
+This visualization is much better, and it shows some distinct areas where sociable urban places can and cannot be found. When comparing these maps to the intersection density some correltaion can be found, but there are also areas that are noticeably more or less prominent depending on the method.
 
 <br/>
 
 ### 3. References
 
 Boeing, G. 2017. OSMnx: New Methods for Acquiring, Constructing, Analyzing, and Visualizing Complex Street Networks. *Computers, Environment and Urban Systems 65*, 126-139. doi:10.1016/j.compenvurbsys.2017.05.004
-
-
-
