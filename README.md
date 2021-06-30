@@ -4,7 +4,7 @@ Urban walkability sounds like a self-explanatory term: it measures how accessibl
 
 In this post I will analyze urban walkability with two network-based approaches. First, I will focus on the structure of a street network by simply calculating intersection densities. Then, with a bit more complex approach, I will run a city-wide routing analysis to find out how different points of interest can be accessed on foot within an urban area.
 
-The data and tools used in the analysis are all open. The street network and urban features are from OpenStreetMap (OSM), and the different analyses are done using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [pandana](https://udst.github.io/pandana/) and [geopandas](https://geopandas.org/) python packages. Visualizations are a mix of matplotlib and seaborn. While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
+The data and tools used are all open. The street network and urban features are from [OpenStreetMap](https://www.openstreetmap.org/) (OSM), and all analyses are done using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [pandana](https://udst.github.io/pandana/) and [geopandas](https://geopandas.org/) python packages. Visualizations are a mix of [matplotlib](https://matplotlib.org/) and [seaborn](https://seaborn.pydata.org/).
 
 <br/>
 
@@ -16,7 +16,7 @@ From OSMnx's documentation:
 
 >*OSMnx is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries.* 
 
-In the first half of the analysis I used OSMnx to download the walkable street network of the analysis area, and to construct a graph from that network. A graph comprises of edges (walkable paths in this case) and nodes (points in which the edges intersect).
+In the first half of the analysis I used OSMnx to download the walkable street network of the analysis area, and to construct a graph from that network. A graph consists of edges (walkable paths in this case) and nodes (points in which the edges intersect).
 
 ![Graph overview](docs/graph_overview.png)
 *The egdes of Warsaw's walkable street network*
@@ -30,7 +30,7 @@ The resulting graph is very dense and has a ton of nodes. This can be problemati
 
 **Visualizing intersection density**
 
-The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, just a heap of nodes isn't really an informative display of the data. To better visualize the intersection density I first used matplotlib's hexbin functionality and then experimented a bit with seaborn's kernel density estimate (KDE) plots.
+The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a plain heap of nodes isn't really an informative display of the data. To better visualize the intersection density I first used matplotlib's hexbin functionality and then experimented a bit with seaborn's kernel density estimate (KDE) plots.
 
 ![Intersection grid](docs/intersection_hexbin.png)
 *Intersections aggregated to a hexagonal grid*
@@ -92,6 +92,12 @@ Another thing to note is that only visualizing the travel times to the nearest P
 *Comparing different routing analyses*
 
 This visualization is much better, and it shows some distinct areas where sociable urban places can and cannot be found. When comparing these maps to the intersection density some correltaion can be found, but there are also areas that are noticeably more or less prominent depending on the method.
+
+<br/>
+
+### 3. Ideas for further research
+
+While in this post I mainly analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
 
 <br/>
 
