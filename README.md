@@ -108,7 +108,7 @@ This blog post showcased two different ways of analyzing walkability based on ne
 More about OSMnx:
 - Boeing, G. 2017. OSMnx: New Methods for Acquiring, Constructing, Analyzing, and Visualizing Complex Street Networks. *Computers, Environment and Urban Systems 65*, 126-139. doi:10.1016/j.compenvurbsoys.2017.05.004
 
-- Being's excellent and openly available [Advanced Urban Analytics](https://github.com/gboeing/ppd599routing) course was also a major inspiration, especially to the routing analysis portion of this post.
+- Being's excellent and openly available [Advanced Urban Analytics](https://github.com/gboeing/ppd599) course was also a major inspiration, especially to the routing analysis portion of this post.
 
 - [Examples of OSMnx usage](https://github.com/gboeing/osmnx-examples)
 
