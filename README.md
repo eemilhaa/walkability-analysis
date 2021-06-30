@@ -4,7 +4,7 @@ Urban walkability can be understood and measured in many different ways. Because
 
 In this blog post I will analyze urban walkability with two network-based approaches. First, I will focus on the structure of a street network by simply calculating intersection densities. Then, with a bit more complex approach, I will run a city-wide routing analysis to find out how different urban features can be accessed on foot within a city.
 
-All analyses are done using open tools and data. The street network and urban features are from [OpenStreetMap](https://www.openstreetmap.org/) (OSM), and the analyses are performed using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [Pandana](https://udst.github.io/pandana/) and [GeoPandas](https://geopandas.org/) python libraries. Visualizations are a mix of [Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/).
+All analyses are done with open tools and data. The street network and urban features are from [OpenStreetMap](https://www.openstreetmap.org/) (OSM), and the analyses are performed using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [Pandana](https://udst.github.io/pandana/) and [GeoPandas](https://geopandas.org/) python libraries. Visualizations are a mix of [Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/).
 
 While in this post I analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data. The complete workflow is found in the two notebooks in this repository.
 
