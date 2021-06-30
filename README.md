@@ -46,7 +46,7 @@ The simplification nearly halved the intersection count: from 177 207 to 96 414.
 
 **Alternative indicators for walkable urban space**
 
-The first part of the analysis relied on the assumption that a dense urban fabric indicates a walkable place. While the pshysical structure of the street network definitely plays a part, there's much more to urban space than intersection counts. So, to get a different insight into urban walkability, I took a slighlty more qualitative approach.
+The first part of the analysis relied on the assumption that a dense urban fabric indicates a walkable place. While the physical structure of the street network definitely plays a part, there's much more to urban space than intersection counts. So, to get a different insight into urban walkability, I took a slighlty more qualitative approach.
 
 Novack et al. (2018) discuss in their [article](https://doi.org/10.3390/s18113794) how different urban features affect the pleasantness of urban space. This article was helpful as the study was done using OSM data, and the authors even provide lists of different features that make urban space pleasant. For my analysis I used their list of OSM features that indicate sociable places, or so called ["third places"](https://en.wikipedia.org/wiki/Third_place):
 
@@ -99,7 +99,7 @@ This visualization is much better, and it clearly shows areas where sociable urb
 
 ### 3. Conclusion
 
-This blog post showcased two different ways of analyzing walkability based on networks. Focusing only on network density is a very quantifiable approach, but it completely ignores the quality of the urban space being analyzed. Approaching walkability as a measure of how certain urban features can be accessed by walking is one possible way to combine the qualitative aspect of walkability with network analysis. Of course, this approach is completely dependent on the types of features selected. This could be an interesting topic for further research: the analysis could, for example, reveal areas walkable to certain groups of people by selecting features that are important to them specifically.
+This blog post showcased two different ways of analyzing walkability based on networks. Focusing only on network density is a very quantifiable approach, but it completely ignores other qualities of the urban space being analyzed. Approaching walkability as a measure of how certain urban features can be accessed by walking is one possible way to combine the qualitative aspect of walkability with network analysis. Of course, this approach is completely dependent on the types of features selected. This could be an interesting topic for further research: the analysis could, for example, reveal areas walkable to certain groups of people by selecting features that are important to them specifically.
 
 <br/>
 
@@ -107,6 +107,6 @@ This blog post showcased two different ways of analyzing walkability based on ne
 
 Boeing, G. 2017. OSMnx: New Methods for Acquiring, Constructing, Analyzing, and Visualizing Complex Street Networks. *Computers, Environment and Urban Systems 65*, 126-139. doi:10.1016/j.compenvurbsys.2017.05.004
 
-Geoff Being's excellent [Advanced Urban Analytics](https://github.com/gboeing/ppd599routing) course was also a major inspiration, especially to the routing analysis portion of this blog post.
+Being's excellent [Advanced Urban Analytics](https://github.com/gboeing/ppd599routing) course was also a major inspiration, especially to the routing analysis portion of this post.
 
 Novack, T., Wang, Z., & Zipf, A. (2018). A system for generating customized pleasant pedestrian routes based on OpenStreetMap data. *Sensors, 18*(11), 3794. https://doi.org/10.3390/s18113794
