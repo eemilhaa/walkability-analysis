@@ -1,12 +1,12 @@
 ## Analysing urban walkability
 
-Urban walkability sounds like a self-explanatory term: it measures how accessible an urban environment is by walking. However, the factors that make up walkability are hard to define, and, consequently, walkability can be understood and measured in many different ways. To say a place is walkable could, for example, mean that the network of streets is dense or that a wide selection of services can be accessed on foot. Other urban elements such as green space, air quality or the amount of traffic affect walkability too.
+Urban walkability can be understood and measured in many different ways. Because of this, the term can be difficult define. To say a place is walkable could for example mean that the network of streets is dense there or that a wide selection of services are accessible on foot. Other urban elements such as green space, air quality or the amount of traffic affect walkability too.
 
 In this blog post I will analyze urban walkability with two network-based approaches. First, I will focus on the structure of a street network by simply calculating intersection densities. Then, with a bit more complex approach, I will run a city-wide routing analysis to find out how different urban features can be accessed on foot within a city.
 
-All data and tools used in the analysis are open. The street network and urban features are from [OpenStreetMap](https://www.openstreetmap.org/) (OSM), and the analyses are done using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [Pandana](https://udst.github.io/pandana/) and [GeoPandas](https://geopandas.org/) python libraries. Visualizations are a mix of [Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/).
+All analyses are done using open tools and data. The street network and urban features are from [OpenStreetMap](https://www.openstreetmap.org/) (OSM), and the analyses are performed using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [Pandana](https://udst.github.io/pandana/) and [GeoPandas](https://geopandas.org/) python libraries. Visualizations are a mix of [Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/).
 
-While in this post I analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data.
+While in this post I analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data. The complete workflow is found in the two notebooks in this repository.
 
 <br/>
 
@@ -99,14 +99,21 @@ This visualization is much better, and it clearly shows areas where sociable urb
 
 ### 3. Conclusion
 
-This blog post showcased two different ways of analyzing walkability based on networks. Focusing only on network density is a very quantifiable approach, but it completely ignores other qualities of the urban space being analyzed. Approaching walkability as a measure of how certain urban features can be accessed by walking is one possible way to combine the qualitative aspect of walkability with network analysis. Of course, this approach is completely dependent on the types of features selected. This could be an interesting topic for further research: the analysis could, for example, reveal areas walkable to certain groups of people by selecting features that are important to them specifically.
+This blog post showcased two different ways of analyzing walkability based on networks. Focusing only on network density is a very quantifiable approach, but it completely ignores other qualities of the urban space being analyzed. Approaching walkability as a measure of how certain urban features can be accessed by walking is one possible way to combine the qualitative aspect of walkability with network analysis. Of course, the results of this approach are completely dependent on the types of features selected. This could be an interesting topic for further research: the analysis could, for example, reveal areas that are walkable to certain groups of people by selecting features that are important to them specifically.
 
 <br/>
 
-### 4. References
+### 4. Some useful resources
 
-Boeing, G. 2017. OSMnx: New Methods for Acquiring, Constructing, Analyzing, and Visualizing Complex Street Networks. *Computers, Environment and Urban Systems 65*, 126-139. doi:10.1016/j.compenvurbsys.2017.05.004
+More about OSMnx:
+- Boeing, G. 2017. OSMnx: New Methods for Acquiring, Constructing, Analyzing, and Visualizing Complex Street Networks. *Computers, Environment and Urban Systems 65*, 126-139. doi:10.1016/j.compenvurbsoys.2017.05.004
 
-Being's excellent [Advanced Urban Analytics](https://github.com/gboeing/ppd599routing) course was also a major inspiration, especially to the routing analysis portion of this post.
+- Being's excellent and openly available [Advanced Urban Analytics](https://github.com/gboeing/ppd599routing) course was also a major inspiration, especially to the routing analysis portion of this post.
 
-Novack, T., Wang, Z., & Zipf, A. (2018). A system for generating customized pleasant pedestrian routes based on OpenStreetMap data. *Sensors, 18*(11), 3794. https://doi.org/10.3390/s18113794
+- [Examples of OSMnx usage](https://github.com/gboeing/osmnx-examples)
+
+Article that deals with OSM features as predictors of urban space quality
+- Novack, T., Wang, Z., & Zipf, A. (2018). A system for generating customized pleasant pedestrian routes based on OpenStreetMap data. *Sensors, 18*(11), 3794. https://doi.org/10.3390/s18113794
+
+Documentation of the libraries used
+- Links in the introduction
