@@ -79,19 +79,19 @@ tags = {
 
 With this list of OSM tags I downloaded the corrseponding points of interest (POIs) from OSM using OSMnx. Then, with a combination of OSMnx and pandana, I created a routable network to which I set the locations of the POIs. For this part of the analysis I used the complete, unsimplified graph. Instead of just nodes the routing analysis uses the whole network, so keeping the precise geometry leads to more accurate travel time calculations. 
 
-After the network was constructed, I ran the routing analysis with pandana. The analysis calculates the travel time from every network node to a specified number of nearest POIs. I specified that 10 nearest POIS should be routed to which means that in the result every network node has a maximum of 10 different travel times: time to to 1st, 2nd, 3rd, ... 10th nearest POI. The travel times are based on the assumption that average walking speed is 4.5 km/h. Additionally I limited the analysis to only calculate travel times to POIs that are within a 15-minute walk.
+After the network was constructed, I ran the routing analysis with pandana. The analysis calculates the travel time from every network node to a specified number of nearest POIs. I specified that 10 nearest POIS should be routed to which means that in the result every network node has a maximum of 10 different travel times: time to to 1st, 2nd, 3rd, ... 10th nearest POI. The travel times are based on the assumption that the average walking speed is 4.5 km/h. Additionally I limited the analysis to only calculate travel times to POIs that are within a 15-minute walk.
 
 ![Walk_access](docs/walk_access.png)
 *Walking time from every node to the nearest POI.*
 
 The resulting visualization is a bit cluttered. To get a clearer view to the data, I once again used matplotlib's hexbins. Instead of amounts of points, I calculated the average travel times for every haxagon this time.
 
-Another thing to note is that only visualizing the travel times to the nearest POIs probably isn't the ideal approach. For example, if one place had one cafe and another place had a cluster of multiple restaurants and shops, both places would look nearly identical on the map. Plotting the travel times to, for example, the 5th nearest POI would fix this, as singular fetures wouldn't affect the map as much. Below is a comparison of how the visualization changes when the selection of walking time is changed between nearest, 5th nearest and 10th nearest POI.
+Another thing to note is that visualizing travel times only to the nearest POIs probably isn't the ideal approach. For example, if one place had one cafe and another place had a cluster of multiple restaurants and shops, both places would look nearly identical on the map. Plotting the travel times to, for example, the 5th nearest POI would fix this, as singular fetures wouldn't affect the map as much. Below is a comparison of how the visualization changes when the selection of walking time is changed between nearest, 5th nearest and 10th nearest POI.
 
 ![Walk_access_comparison](docs/walk_access_comparison.png)
 *Comparing different routing analyses*
 
-This visualization is much better, and it shows some distinct areas where sociable urban places can and cannot be found. When comparing these maps to the intersection density some correltaion can be found, but there are also areas that are noticeably more or less prominent depending on the method.
+This visualization is much better, and it shows some distinct areas where sociable urban places can and cannot be accessed on foot. When comparing these maps to the intersection density some correlation can be found, but there are also areas that are noticeably more or less prominent depending on the method.
 
 <br/>
 
