@@ -32,7 +32,7 @@ The resulting graph is very dense and has a ton of nodes. This can be problemati
 
 **Visualizing intersection density**
 
-The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a plain cluster of nodes isn't really an informative display of the data. To better visualize the intersection density I first used Matplotlib's hexbin functionality and then experimented a bit with Seaborn's kernel density estimate (KDE) plots.
+The simplification nearly halved the intersection count: from 177 207 to 96 414. Still, a plain cluster of nodes isn't exactly an informative display of the data. To better visualize the intersection density I first used Matplotlib's hexbin functionality and then experimented a bit with Seaborn's kernel density estimate (KDE) plots.
 
 ![Intersection grid](docs/intersection_hexbin.png)
 *Intersections aggregated to a hexagonal grid*
