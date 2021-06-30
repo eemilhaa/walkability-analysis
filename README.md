@@ -18,7 +18,6 @@ From OSMnx's documentation:
 
 In the first half of the analysis I used OSMnx to download the walkable street network of the analysis area, and to construct a graph from that network. A graph comprises of edges (walkable paths in this case) and nodes (points in which the edges intersect).
 
-
 ![Graph overview](docs/graph_overview.png)
 *The egdes of Warsaw's walkable street network*
 
@@ -74,6 +73,7 @@ tags = {
     ]
 }
 ```
+*The OSM tags use in the analysis*
 
 <br/>
 
@@ -97,7 +97,7 @@ Also, visualizing the travel times to only the nearest POIs probably isn't the i
 
 <br/>
 
-This visualization is much better, and it shows some distinct areas where sociable urban place can and cannot be found. Especially the 5th and 10th nearest visualizations detect also urban subcenters pretty nicely. When comparing these maps to just the intersection density some correltaion can be found, but some areas are noticeably more or less prominent depending on the method.
+This visualization is much better, and it shows some distinct areas where sociable urban places can and cannot be found. Especially the 5th and 10th nearest visualizations detect also urban subcenters pretty nicely. When comparing these maps to just the intersection density some correltaion can be found, but some areas are noticeably more or less prominent depending on the method.
 
 <br/>
 
