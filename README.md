@@ -1,6 +1,6 @@
 ## Analysing urban walkability
 
-Urban walkability can be understood and measured in many different ways. Because of this, the term can be difficult define. To say a place is walkable could for example mean that the network of streets is dense there or that a wide selection of services are accessible on foot. Other urban elements such as green space, air quality or the amount of traffic affect walkability too.
+Urban walkability can be understood and measured in many different ways. Because of this, the term can be difficult to define. To say a place is walkable could for example mean that the network of streets is dense there or that a wide selection of services are accessible on foot. Other urban elements such as green space, air quality or the amount of traffic affect walkability too.
 
 In this blog post I will analyze urban walkability with two network-based approaches. First, I will focus on the structure of a street network by simply calculating intersection densities. Then, with a bit more complex approach, I will run a city-wide routing analysis to find out how different urban features can be accessed on foot within a city.
 
@@ -18,7 +18,7 @@ From OSMnx's documentation:
 
 >*OSMnx is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries.* 
 
-In the first half of the analysis I used OSMnx to download the walkable street network of the analysis area, and to construct a graph from that network. A graph consists of edges (walkable paths in this case) and nodes (points in which the edges intersect).
+In the first half of the analysis I used OSMnx to download the walkable street network of the analysis area and to construct a graph from that network. A graph consists of edges (walkable paths in this case) and nodes (points in which the edges intersect).
 
 ![Graph overview](docs/graph_overview.png)
 *The egdes of Warsaw's walkable street network*
@@ -116,4 +116,4 @@ Article that deals with OSM features as predictors of urban space quality
 - Novack, T., Wang, Z., & Zipf, A. (2018). A system for generating customized pleasant pedestrian routes based on OpenStreetMap data. *Sensors, 18*(11), 3794. https://doi.org/10.3390/s18113794
 
 Documentation of the libraries used
-- Links in the introduction
+- Links in the [introduction](https://github.com/eemilhaa/walkability-analysis#analysing-urban-walkability)
