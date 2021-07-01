@@ -21,12 +21,12 @@ From OSMnx's documentation:
 In the first half of the analysis I used OSMnx to download the walkable street network of the analysis area and to construct a graph from that network. A graph consists of edges (walkable paths in this case) and nodes (points in which the edges intersect).
 
 ![Graph overview](docs/graph_overview.png)
-*The egdes of Warsaw's walkable street network*
+*The egdes of Warsaw's walkable street network.*
 
 The resulting graph is very dense and has a ton of nodes. This can be problematic. For example, if two paths merge with a third path at even slightly different points, one real-life intersecion can turn into 2 nodes. In this analysis I tried to model actual intersections only, which is why I chose to simplify the graph a bit. I dissolved all nodes within five meters of eachother into single nodes and excluded all dead-ends. The result is not perfect, but I think it represents the "real-life" intersections better than the original graph.
 
 ![Graph comparison](docs/graph_comparison.png)
-*The original (left) and simplified (right) graphs side by side*
+*The original (left) and simplified (right) graphs side by side.*
 
 <br/>
 
@@ -38,7 +38,7 @@ The simplification nearly halved the intersection count: from 177 207 to 96 414.
 *Intersections aggregated to a hexagonal grid*
 
 ![Intersection kde](docs/intersection_kde.png)
-*Seaborn's KDE plotting is another cool way to visualize point densities*
+*Seaborn's KDE plotting is another cool way to visualize point densities.*
 
 <br/>
 
@@ -73,7 +73,7 @@ tags = {
     ]
 }
 ```
-*The OSM tags used in the analysis*
+*The OSM tags used in the analysis.*
 
 <br/>
 
@@ -91,7 +91,7 @@ The resulting visualization is a bit cluttered. To get a clearer overview of the
 Another thing to note is that visualizing travel times only to the nearest POI probably isn't the ideal approach. For example, if one place had one cafe and another place had a cluster of multiple restaurants and shops, both places would look nearly identical on the map. Plotting the travel times to, for example, the 5th nearest POI would fix this, as singular features wouldn't affect the map as much. Below is a comparison of how the visualization changes when the selection of walking time is changed between nearest, 5th nearest and 10th nearest POI.
 
 ![Walk_access_comparison](docs/walk_access_comparison.png)
-*Comparison of walking times to different routing targets*
+*Comparison of walking times to different routing targets.*
 
 This visualization is much better, and it clearly shows areas where sociable urban places can and cannot be accessed on foot. Some correlation can be found between these maps and the intersection density, but there are also areas that are noticeably more or less "walkable" depending on the method.
 
