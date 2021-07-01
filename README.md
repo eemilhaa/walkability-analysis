@@ -1,12 +1,12 @@
 ## Analysing urban walkability
 
-Urban walkability can be understood and measured in many different ways. Because of this, the term can be difficult to define. To say a place is walkable could for example mean that the network of streets is dense there or that a wide selection of services are accessible on foot. Other urban elements such as green space, air quality or the amount of traffic affect walkability too.
+Urban walkability can be understood and measured in many different ways. Because of this, the term is difficult to define. To say a place is walkable could for example mean that the network of streets is dense or that a wide selection of services are accessible on foot. Other urban elements such as green space, air quality or the amount of traffic affect walkability too.
 
 In this blog post I will analyze urban walkability with two network-based approaches. First, I will focus on the structure of a street network by simply calculating intersection densities. Then, with a bit more complex approach, I will run a city-wide routing analysis to find out how different urban features can be accessed on foot within a city.
 
 All analyses are done with open tools and data. The street network and urban features are from [OpenStreetMap](https://www.openstreetmap.org/) (OSM), and the analyses are performed using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [Pandana](https://udst.github.io/pandana/) and [GeoPandas](https://geopandas.org/) python libraries. Visualizations are a mix of [Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/).
 
-While in this post I analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data. The complete workflow is found in the two notebooks in this repository.
+While in this post I analyze the walkability in Warsaw, Poland, the workflow is directly transferable across any city with sufficient OSM data. The complete workflow and code is found in the two notebooks in this repository.
 
 <br/>
 
@@ -79,7 +79,7 @@ tags = {
 
 **Routing analysis**
 
-With this list of OSM tags I downloaded the corrseponding points of interest (POIs) from OSM using OSMnx. Then, with a combination of OSMnx and Pandana, I created a routable network to which I set the locations of the POIs. For this part of the analysis I used the complete, unsimplified graph. Instead of just nodes the routing analysis uses the edges too, so keeping the precise geometry leads to more accurate travel time calculations. 
+With this list of OSM tags I downloaded the corrseponding points of interest (POIs) from OSM using OSMnx. Then, with a combination of OSMnx and Pandana, I created a routable network to which I set the locations of the POIs. For this part of the analysis I used the complete, unsimplified graph. The routing analysis uses both the nodes and the edges of the graph, so keeping the precise geometry leads to more accurate travel time calculations. 
 
 After the network was constructed, I ran the routing analysis with Pandana. The analysis calculates the travel time from every network node to a specified number of nearest POIs. I specified that 10 nearest POIs should be routed to which means that in the result every network node has a maximum of 10 different travel times: time to to 1st, 2nd, 3rd, ... 10th nearest POI. The travel times are based on the assumption that the average walking speed is 4.5 km/h. Additionally I limited the analysis to only calculate travel times to POIs that are within a 15-minute walk.
 
@@ -108,7 +108,7 @@ This blog post showcased two different ways of analyzing walkability based on ne
 More about OSMnx:
 - Boeing, G. 2017. OSMnx: New Methods for Acquiring, Constructing, Analyzing, and Visualizing Complex Street Networks. *Computers, Environment and Urban Systems 65*, 126-139. doi:10.1016/j.compenvurbsoys.2017.05.004
 
-- Being's excellent and openly available [Advanced Urban Analytics](https://github.com/gboeing/ppd599) course was also a major inspiration, especially to the routing analysis portion of this post.
+- Boeing's excellent and openly available [Advanced Urban Analytics](https://github.com/gboeing/ppd599) course was also a major inspiration, especially to the routing analysis portion of this post.
 
 - [Examples of OSMnx usage](https://github.com/gboeing/osmnx-examples)
 
