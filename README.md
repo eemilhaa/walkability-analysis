@@ -124,4 +124,4 @@ This blog post showcased two network-based methods of analyzing walkability. Foc
 - Novack, T., Wang, Z., & Zipf, A. (2018). A system for generating customized pleasant pedestrian routes based on OpenStreetMap data. *Sensors, 18*(11), 3794. https://doi.org/10.3390/s18113794
 
 **Documentation of the libraries used:**
-- Links in the [introduction](#analysing-urban-walkability)
+- Links in the [introduction](#analysing-urban-walkability-using-openstreetmap-and-python)
