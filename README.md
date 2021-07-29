@@ -111,10 +111,10 @@ This blog post showcased two network-based methods of analyzing walkability. Foc
 
 **A great overview of some key concepts:**
 
-- Ewing, R., & Cervero, R. (2010). Travel and the built environment: A meta-analysis. Journal of the American planning association, 76(3), 265-294. https://doi.org/10.1080/01944361003766766
+- Ewing, R., & Cervero, R. (2010). Travel and the built environment: A meta-analysis. *Journal of the American planning association, 76*(3), 265-294. https://doi.org/10.1080/01944361003766766
 
 **More about OSMnx:**
-- Boeing, G. 2017. OSMnx: New Methods for Acquiring, Constructing, Analyzing, and Visualizing Complex Street Networks. *Computers, Environment and Urban Systems 65*, 126-139. doi:10.1016/j.compenvurbsoys.2017.05.004
+- Boeing, G. 2017. OSMnx: New Methods for Acquiring, Constructing, Analyzing, and Visualizing Complex Street Networks. *Computers, Environment and Urban Systems 65*, 126-139. https://doi.org/10.1016/j.compenvurbsys.2017.05.004
 
 - Boeing's excellent and openly available [Advanced Urban Analytics](https://github.com/gboeing/ppd599) course was also a major inspiration, especially to the routing analysis portion of this post.
 
