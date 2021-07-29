@@ -1,4 +1,4 @@
-## Analysing urban walkability
+## Analysing urban walkability using OpenStreetMap and Python
 
 Urban walkability can be understood and measured in many different ways. Because of this, the term is difficult to define. To say a place is walkable could for example mean that the network of streets is dense or that a wide selection of services is accessible on foot. Other urban elements such as green space, air quality or the amount of traffic affect walkability too.
 
