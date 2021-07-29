@@ -1,8 +1,8 @@
 ## Analysing urban walkability
 
-Urban walkability can be understood and measured in many different ways. Because of this, the term is difficult to define. To say a place is walkable could for example mean that the network of streets is dense or that a wide selection of services are accessible on foot. Other urban elements such as green space, air quality or the amount of traffic affect walkability too.
+Urban walkability can be understood and measured in many different ways. Because of this, the term is difficult to define. To say a place is walkable could for example mean that the network of streets is dense or that a wide selection of services is accessible on foot. Other urban elements such as green space, air quality or the amount of traffic affect walkability too.
 
-In this blog post I will analyze urban walkability with two network-based approaches. First, I will focus on the structure of a street network by simply calculating intersection densities. Then, with a bit more complex approach, I will run a city-wide routing analysis to find out how different urban features can be accessed on foot within a city.
+Here I will analyze urban walkability with two network-based approaches. First, I will focus on the structure of a street network by simply calculating intersection densities. Then, with a bit more complex approach, I will run a city-wide routing analysis to find out how different urban features can be accessed on foot within a city.
 
 All analyses are done with open tools and data. The street network and urban features are from [OpenStreetMap](https://www.openstreetmap.org/) (OSM), and the analyses are performed using the [OSMnx](https://osmnx.readthedocs.io/en/stable/), [Pandana](https://udst.github.io/pandana/) and [GeoPandas](https://geopandas.org/) python libraries. Visualizations are a mix of [Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/).
 
@@ -79,7 +79,7 @@ tags = {
 
 **Routing analysis**
 
-With this list of OSM tags I downloaded the corrseponding points of interest (POIs) from OSM using OSMnx. Then, with a combination of OSMnx and Pandana, I created a routable network to which I set the locations of the POIs. For this part of the analysis I used the complete, unsimplified graph. The routing analysis uses both the nodes and the edges of the graph, so keeping the precise geometry leads to more accurate travel time calculations. 
+With this list of OSM tags I downloaded the corresponding points of interest (POIs) from OSM using OSMnx. Then, with a combination of OSMnx and Pandana, I created a routable network to which I set the locations of the POIs. For this part of the analysis I used the complete, unsimplified graph. The routing analysis uses both the nodes and the edges of the graph, so keeping the precise geometry leads to more accurate travel time calculations. 
 
 After the network was constructed, I ran the routing analysis with Pandana. The analysis calculates the travel time from every network node to a specified number of nearest POIs. I specified that 10 nearest POIs should be routed to which means that in the result every network node has a maximum of 10 different travel times: time to to 1st, 2nd, 3rd, ... 10th nearest POI. The travel times are based on the assumption that the average walking speed is 4.5 km/h. Additionally I limited the analysis to only calculate travel times to POIs that are within a 15-minute walk.
 
@@ -99,7 +99,7 @@ This visualization is much better, and it clearly shows areas where sociable urb
 
 ### 3. Conclusion
 
-This blog post showcased two different ways of analyzing walkability based on networks. Focusing only on network density is a very quantifiable approach, but it completely ignores other qualities of the urban space being analyzed. Approaching walkability as a measure of how certain urban features can be accessed by walking is one possible way to combine the qualitative aspect of walkability with network analysis. Of course, the results of this approach are completely dependent on the types of features selected. This could be an interesting topic for further research: the analysis could, for example, reveal areas that are walkable to certain groups of people by selecting features that are important to them specifically.
+This blog post showcased two network-based methods of analyzing walkability. Focusing only on network density is a very quantifiable approach, but it completely ignores other qualities of the urban space being analyzed. Approaching walkability as a measure of how certain urban features can be accessed by walking is one possible way to combine the qualitative aspect of walkability with network analysis. Of course, the results of this approach are completely dependent on the types of features selected. This could be an interesting topic for further research: the analysis could, for example, reveal areas that are walkable to certain groups of people by selecting features that are important to them specifically.
 
 <br/>
 
