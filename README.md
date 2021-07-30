@@ -16,6 +16,8 @@ While in this post I analyze the walkability in Warsaw, Poland, the workflow is 
 
 Intersection density tells us how dense and connected a street network is. These indicators are directly linked with how walkable a place is. An area with a dense network has fewer inaccessible spots in it, and a high connectivity makes for more diverse and efficient route possibilities. Scientific literature backs this up: a positive correlation between intersection density and walking as a transport method has been consistently demonstrated (For example see [Ewing & Cervero 2010](https://doi.org/10.1080/01944361003766766)).
 
+<br/>
+
 **OSMnx and graphs**
 
 From OSMnx's documentation:
